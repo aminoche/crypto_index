@@ -7,14 +7,14 @@ const getQuoteById = cryptoIds.map(key => getQuote(key));
 const totalMarketCap = _.sumBy(getQuoteById, quote => quote.market_cap);
 const totalVolume = _.sumBy(getQuoteById, quote => quote.volume_24h);
 
-console.log(
-  getQuoteById.map(quote =>
-    Object.assign(
-      {
-        percentVolume: quote.volume_24h / totalVolume,
-        percentMarketCap: quote.market_cap / totalMarketCap
-      },
-      sampleData
-    )
+const percents = getQuoteById.map(quote =>
+  Object.assign(
+    {
+      percentVolume: quote.volume_24h / totalVolume,
+      percentMarketCap: quote.market_cap / totalMarketCap
+    },
+    sampleData
   )
 );
+
+console.log(percents);
