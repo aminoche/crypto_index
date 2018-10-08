@@ -11,4 +11,6 @@ const sampleData = async (start = 1, limit = 100, sort = 'rank') => {
   }
 };
 
-(async () => console.log(await sampleData()))();
+const returnedData = (async () => await sampleData())();
+
+module.exports = { returnedData };
