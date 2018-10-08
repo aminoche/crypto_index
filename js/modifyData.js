@@ -1,5 +1,5 @@
-// const sampleData = require('./sampleData.json');
-const { sampleData } = require('./getData');
+const sampleData = require('./sampleData.json');
+const { getMarketData, getGlobalData } = require('./getData');
 const _ = require('lodash');
 const cl = variable => console.log(JSON.stringify(variable, null, 2));
 
@@ -14,12 +14,12 @@ const totalVolume = _.sumBy(getQuoteById, quote => quote.volume_24h);
 const setVolumeAndMarketPercent = key => {
   _.setWith(
     key,
-    ['Volume %'],
+    ['percent_of_total_volume'],
     Number(((key.quotes.USD.volume_24h / totalVolume) * 100).toFixed(2))
   );
   _.setWith(
     key,
-    ['Market %'],
+    ['percent_of_total_market'],
     Number(((key.quotes.USD.market_cap / totalMarketCap) * 100).toFixed(2))
   );
   return key;
@@ -28,5 +28,9 @@ const volumeAndMarketCapPercent = cryptoIds.map(key => {
   return setVolumeAndMarketPercent(sampleData[key]);
 });
 
-cl((async () => await sampleData())());
-// cl(volumeAndMarketCapPercent);
+cl(volumeAndMarketCapPercent);
+console.log(
+  'Percent of Total Market Cap =>',
+  totalMarketCap / total_market_cap
+);
+console.log('Percent of Total Volume => ', totalVolume / total_volume_24h);
