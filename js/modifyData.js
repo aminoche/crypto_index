@@ -1,5 +1,5 @@
-const sampleData = require('./sampleData.json');
-const { returnedData } = require('./getData');
+// const sampleData = require('./sampleData.json');
+const { sampleData } = require('./getData');
 const _ = require('lodash');
 const cl = variable => console.log(JSON.stringify(variable, null, 2));
 
@@ -28,15 +28,5 @@ const volumeAndMarketCapPercent = cryptoIds.map(key => {
   return setVolumeAndMarketPercent(sampleData[key]);
 });
 
-cl(volumeAndMarketCapPercent);
-
-// const percents = getQuoteById.map(quote =>
-//   Object.assign(
-//     {
-//       percentVolume: ((quote.volume_24h / totalVolume) * 100).toFixed(2),
-//       percentMarketCap:
-//         ((quote.market_cap / totalMarketCap) * 100).toFixed(2) + '%'
-//     },
-//     quote
-//   )
-// );
+cl((async () => await sampleData())());
+// cl(volumeAndMarketCapPercent);
