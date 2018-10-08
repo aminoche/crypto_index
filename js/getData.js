@@ -6,7 +6,7 @@ const getMarketData = async (start = 1, limit = 100, sort = 'rank') => {
     const cryptosByMarketCap = await axios.get(
       `https://api.coinmarketcap.com/v2/ticker/?start=${start}&limit=${limit}&sort=${sort}`
     );
-    return cryptosByMarketCap.data;
+    return JSON.stringify(cryptosByMarketCap.data, null, 2);
   } catch (error) {
     console.error(error);
   }
@@ -17,12 +17,13 @@ const getGlobalData = async () => {
     const globalData = await axios.get(
       'https://api.coinmarketcap.com/v2/global/'
     );
-    return globalData.data;
+    return JSON.stringify(globalData.data, null, 2);
   } catch (error) {
     console.error(error);
   }
 };
 
-const buildMarketData = (async () => console.log(await getMarketData()))();
+// (async () => console.log(await getMarketData()))(); //MarketData
+// (async () => console.log(await getGlobalData()))(); //GlobalData
 
 module.exports = { getMarketData, getGlobalData };

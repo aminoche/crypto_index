@@ -1,0 +1,18 @@
+{
+  "data": {
+    "active_cryptocurrencies": 2042,
+    "active_markets": 14490,
+    "bitcoin_percentage_of_market_cap": 52.06,
+    "quotes": {
+      "USD": {
+        "total_market_cap": 221211924150,
+        "total_volume_24h": 12508296102
+      }
+    },
+    "last_updated": 1539023362
+  },
+  "metadata": {
+    "timestamp": 1539022789,
+    "error": null
+  }
+}
